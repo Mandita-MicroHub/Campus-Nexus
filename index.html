@@ -144,6 +144,95 @@ textarea{resize:vertical;min-height:64px;}
 .modal h2{margin:0 0 4px;font-size:20px;font-weight:600;}
 .modal p.sub{color:var(--muted);font-size:13px;margin:0 0 16px;}
 
+/* ---------- Onboard Modal ---------- */
+#onboard.modal-overlay {
+  background: linear-gradient(135deg, rgba(31,111,92,0.85), rgba(22,38,30,0.95));
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+#onboard .modal {
+  background: rgba(255, 255, 255, 0.98);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 24px;
+  padding: 40px;
+  max-width: 440px;
+  box-shadow: 0 24px 80px rgba(0,0,0,0.4);
+  animation: modalPop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+@keyframes modalPop {
+  0% { transform: translateY(40px) scale(0.92); opacity: 0; }
+  100% { transform: translateY(0) scale(1); opacity: 1; }
+}
+#onboard .logo-mark {
+  width: 52px;
+  height: 52px;
+  background: linear-gradient(135deg, var(--marigold), var(--marigold-dark));
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+  color: #fff;
+  font-family: 'Fraunces', serif;
+  font-weight: 700;
+  font-size: 24px;
+  box-shadow: 0 8px 16px rgba(232,163,61,0.25);
+}
+#onboard h2 {
+  font-size: 28px;
+  color: var(--teal-dark);
+  margin-bottom: 8px;
+  line-height: 1.2;
+}
+#onboard p.sub {
+  font-size: 15px;
+  line-height: 1.5;
+  margin-bottom: 28px;
+  color: var(--muted);
+}
+#onboard .input-group {
+  margin-bottom: 18px;
+}
+#onboard label {
+  font-size: 13px;
+  color: var(--teal-dark);
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+#onboard input, #onboard select {
+  padding: 12px 16px;
+  border-radius: 12px;
+  border: 1.5px solid var(--border);
+  font-size: 15px;
+  transition: all 0.2s ease;
+  background: #fafbfa;
+}
+#onboard input:focus, #onboard select:focus {
+  border-color: var(--teal);
+  background: #fff;
+  box-shadow: 0 0 0 4px var(--teal-tint);
+  transform: translateY(-1px);
+}
+#onboard .btn-primary {
+  padding: 14px;
+  font-size: 16px;
+  border-radius: 12px;
+  margin-top: 12px;
+  background: linear-gradient(135deg, var(--teal), var(--teal-dark));
+  border: none;
+  box-shadow: 0 6px 16px rgba(31,111,92,0.3);
+  transition: all 0.3s ease;
+  width: 100%;
+  justify-content: center;
+}
+#onboard .btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(31,111,92,0.4);
+}
+#onboard .btn-primary:active {
+  transform: translateY(0);
+}
+
 .warn-box{background:var(--coral-tint);border:1px solid #F0C4AE;color:#8A3A1D;padding:10px 12px;border-radius:9px;font-size:12.5px;margin-top:10px;display:flex;gap:8px;align-items:flex-start;}
 
 .streak-flame{display:flex;align-items:center;gap:6px;font-weight:700;color:var(--coral);}
@@ -173,18 +262,25 @@ a{color:var(--teal);}
 
 <div id="onboard" class="modal-overlay hidden">
   <div class="modal">
+    <div class="logo-mark">CN</div>
     <h2>Welcome to Campus Nexus</h2>
     <p class="sub">Set up your profile to start using the marketplace, coding hub, resources, and everything else.</p>
-    <label>Full name</label>
-    <input type="text" id="ob-name" placeholder="Ananya Sharma">
-    <label>Department</label>
-    <input type="text" id="ob-dept" placeholder="Computer Science">
-    <label>Year</label>
-    <select id="ob-year">
-      <option>1st year</option><option>2nd year</option><option>3rd year</option><option>4th year</option><option>Postgraduate</option>
-    </select>
-    <div style="margin-top:18px;">
-      <button class="btn btn-primary" style="width:100%;justify-content:center;" onclick="completeOnboarding()">Enter Campus Nexus</button>
+    <div class="input-group">
+      <label>Full name</label>
+      <input type="text" id="ob-name" placeholder="Ananya Sharma">
+    </div>
+    <div class="input-group">
+      <label>Department</label>
+      <input type="text" id="ob-dept" placeholder="Computer Science">
+    </div>
+    <div class="input-group">
+      <label>Year</label>
+      <select id="ob-year">
+        <option>1st year</option><option>2nd year</option><option>3rd year</option><option>4th year</option><option>Postgraduate</option>
+      </select>
+    </div>
+    <div style="margin-top:8px;">
+      <button class="btn btn-primary" onclick="completeOnboarding()">Enter Campus Nexus</button>
     </div>
   </div>
 </div>
